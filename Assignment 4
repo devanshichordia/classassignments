@@ -1,1 +1,39 @@
 
+# Program to add two matrices using user input
+
+# Enter number of rows and columns
+rows = int(input("Enter number of rows: "))
+cols = int(input("Enter number of columns: "))
+
+# Input first matrix
+print("Enter elements of first matrix:")
+A = []
+for i in range(rows):
+    row = []
+    for j in range(cols):
+        element = int(input(f"Enter A[{i}][{j}]: "))
+        row.append(element)
+    A.append(row)
+
+# Input second matrix
+print("Enter elements of second matrix:")
+B = []
+for i in range(rows):
+    row = []
+    for j in range(cols):
+        element = int(input(f"Enter B[{i}][{j}]: "))
+        row.append(element)
+    B.append(row)
+
+# Add the matrices
+C = []
+for i in range(rows):
+    row = []
+    for j in range(cols):
+        row.append(A[i][j] + B[i][j])
+    C.append(row)
+
+# Display the result
+print("\nSum of the two matrices:")
+for row in C:
+    print(row)
