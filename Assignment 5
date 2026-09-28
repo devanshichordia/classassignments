@@ -1,1 +1,7 @@
 
+import re
+s = str(input("Enter a string"))
+if re.search(r'[^a-zA-Z0-9]',s):
+    print("The string contains other characters:",s)
+else:
+     print("The string contains a-z and A-Z and 0-9 :",s)
