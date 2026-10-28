@@ -1,0 +1,62 @@
+import pandas as pd
+import numpy as np
+
+# Create sample data
+data = {
+    'Name': ['Aman', 'Riya', 'Sohan', 'Aman', 'Neha', None, 'Karan', 'Riya'],
+    'Marks': [85, 90, None, 85, 78, 92, None, 90],
+    'City': ['Pune', 'Mumbai', 'Delhi', 'Pune', None, 'Chennai', 'Delhi', 'Mumbai']
+}
+
+df = pd.DataFrame(data)
+
+print("Original DataFrame:")
+print(df)
+print("\n")
+
+# 1. Check basic information
+print("Info:")
+print(df.info())
+print("\n")
+
+print("Description:")
+print(df.describe(include='all'))
+print("\n")
+
+# 2. Handle missing values
+# Fill missing numeric values with mean
+df['Marks'] = df['Marks'].fillna(df['Marks'].mean())
+
+# Fill missing categorical values with mode
+df['Name'] = df['Name'].fillna(df['Name'].mode()[0])
+df['City'] = df['City'].fillna(df['City'].mode()[0])
+
+print("After handling missing values:")
+print(df)
+print("\n")
+
+# 3. Remove duplicate records
+df = df.drop_duplicates()
+
+print("After removing duplicates:")
+print(df)
+print("\n")
+
+# 4. Select and filter data using loc[]
+# Example: Select students with marks greater than 85
+selected_data = df.loc[df['Marks'] > 85]
+
+print("Students with marks greater than 85:")
+print(selected_data)
+print("\n")
+
+# Example: Select specific columns for all rows
+specific_columns = df.loc[:, ['Name', 'Marks']]
+
+print("Only Name and Marks columns:")
+print(specific_columns)
+print("\n")
+
+# 5. Save cleaned data to CSV
+df.to_csv("cleaned_data.csv", index=False)
+print("Cleaned data saved to cleaned_data.csv")
